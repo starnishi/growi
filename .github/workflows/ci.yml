@@ -280,7 +280,6 @@ jobs:
         isCompactMode: true
         url: ${{ secrets.SLACK_WEBHOOK_URL }}
 
-
     - name: Slack Notification
       uses: weseek/ghaction-slack-notification@master
       if: sucusess()
