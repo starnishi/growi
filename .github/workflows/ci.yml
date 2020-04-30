@@ -272,7 +272,6 @@ jobs:
 
     - name: test
       uses: weseek/ghaction-slack-notification@master
-      if: sucusess()
       with:
         type: ${{ job.status }}
         job_name: '*Release v${{ env.RELEASE_VERSION }}*'
