@@ -270,16 +270,6 @@ jobs:
         name: Report
         path: report
 
-    - name: Slack Notification
-      uses: weseek/ghaction-slack-notification@master
-      if: failure()
-      with:
-        type: ${{ job.status }}
-        job_name: '*build-prod (${{ matrix.node-version }})*'
-        channel: '#ci'
-        isCompactMode: true
-        url: ${{ secrets.SLACK_WEBHOOK_URL }}
-
     - name: test
       uses: weseek/ghaction-slack-notification@master
       if: sucusess()
