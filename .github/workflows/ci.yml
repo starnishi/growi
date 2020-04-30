@@ -279,3 +279,14 @@ jobs:
         channel: '#ci'
         isCompactMode: true
         url: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+
+    - name: Slack Notification
+      uses: weseek/ghaction-slack-notification@master
+      if: sucusess()
+      with:
+        type: ${{ job.status }}
+        job_name: '*Release v${{ env.RELEASE_VERSION }}*'
+        channel: '#slacktest'
+        url: ${{ secrets.SLACK_WEBHOOK_URL }}
+        icon_emoji: 'tada'
