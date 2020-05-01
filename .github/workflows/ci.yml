@@ -69,15 +69,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Slack Notification
-      uses: weseek/ghaction-slack-notification@master
-      if: failure()
-      with:
-        type: ${{ job.status }}
-        job_name: '*test (${{ matrix.node-version }})*'
-        channel: '#ci'
-        isCompactMode: true
-        url: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 
   test:
