@@ -19,6 +19,7 @@ class HeaderSearchBox extends React.Component {
   constructor(props) {
     super(props);
 
+    ほげ;
     this.state = {
       text: '',
       isScopeChildren: false,
