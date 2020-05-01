@@ -52,6 +52,23 @@ jobs:
       run: |
         yarn lint
 
+    - name: test
+      uses: weseek/ghaction-slack-notification@master
+      with:
+        type: ${{ job.status }}
+        job_name: '*Release v${{ env.RELEASE_VERSION }}*'
+        channel: '#slacktest'
+        url: ${{ secrets.SLACK_WEBHOOK_URL }}
+        icon_emoji: 'tada'
+
+    - name: Upload release notes
+      uses: Roang-zero1/github-create-release-action@master
+      with:
+        created_tag: v${{ env.RELEASE_VERSION }}
+        changelog_file: CHANGES.md
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Slack Notification
       uses: weseek/ghaction-slack-notification@master
       if: failure()
@@ -269,20 +286,3 @@ jobs:
       with:
         name: Report
         path: report
-
-    - name: test
-      uses: weseek/ghaction-slack-notification@master
-      with:
-        type: ${{ job.status }}
-        job_name: '*Release v${{ env.RELEASE_VERSION }}*'
-        channel: '#slacktest'
-        url: ${{ secrets.SLACK_WEBHOOK_URL }}
-        icon_emoji: 'tada'
-
-    - name: Upload release notes
-      uses: Roang-zero1/github-create-release-action@master
-      with:
-        created_tag: v${{ env.RELEASE_VERSION }}
-        changelog_file: CHANGES.md
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
