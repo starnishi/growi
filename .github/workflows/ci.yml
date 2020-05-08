@@ -54,6 +54,7 @@ jobs:
 
     - name: test
       uses: weseek/ghaction-slack-notification@feat/add-release-mode
+      if: failure()
       with:
         type: ${{ job.status }}
         job_name: '*Release v${{ env.RELEASE_VERSION }}*'
