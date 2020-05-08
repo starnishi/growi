@@ -53,13 +53,14 @@ jobs:
         yarn lint
 
     - name: test
-      uses: weseek/ghaction-slack-notification@master
+      uses: weseek/ghaction-slack-notification@feat/add-release-mode
       with:
         type: ${{ job.status }}
         job_name: '*Release v${{ env.RELEASE_VERSION }}*'
         channel: '#slacktest'
         url: ${{ secrets.SLACK_WEBHOOK_URL }}
         icon_emoji: 'tada'
+        isReleaseMode: true
 
     - name: Upload release notes
       uses: Roang-zero1/github-create-release-action@master
