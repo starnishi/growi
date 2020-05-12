@@ -26,9 +26,13 @@ $logo-mark-fill: lighten(desaturate($topbar, 10%), 15%);
 $wikilinktext: $subthemecolor;
 $wikilinktext-hover: gba(171, 224, 174, 0.9);
 
-@import 'apply-colors';
-@import 'apply-colors-light';
-
+//== Light Mode
+//
+html[light],
+html[dark] {
+  @import 'apply-colors';
+  @import 'apply-colors-light';
+}
 // add background-image
 .main-container > #wrapper > #page-wrapper,
 .page-editor-preview-container {
