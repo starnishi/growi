@@ -53,16 +53,13 @@ jobs:
         yarn lint
 
     - name: test
-      uses: weseek/ghaction-slack-notification@feat/add-release-mode
+      uses: weseek/ghaction-release-slack-notification@master
       if: failure()
       with:
-        type: ${{ job.status }}
-        job_name: '*Release v${{ env.RELEASE_VERSION }}*'
-        channel: '#slacktest'
+        channel: '#general'
         url: ${{ secrets.SLACK_WEBHOOK_URL }}
-        icon_emoji: 'tada'
-        isReleaseMode: true
-        created_tag: v${{ env.RELEASE_VERSION }}
+        created_tag: ${{ env.RELEASE_VERSION }}
+        changelog_file: CHANGES.md
 
   test:
     runs-on: ubuntu-latest
