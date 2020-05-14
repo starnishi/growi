@@ -59,7 +59,6 @@ jobs:
         channel: '#slacktest'
         url: ${{ secrets.SLACK_WEBHOOK_URL }}
         created_tag: ${{ env.RELEASE_VERSION }}
-        changelog_file: CHANGES.md
 
   test:
     runs-on: ubuntu-latest
