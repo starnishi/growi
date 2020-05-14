@@ -56,7 +56,7 @@ jobs:
       uses: weseek/ghaction-release-slack-notification@feat/release-notification
       if: failure()
       with:
-        channel: '#general'
+        channel: '#slacktest'
         url: ${{ secrets.SLACK_WEBHOOK_URL }}
         created_tag: ${{ env.RELEASE_VERSION }}
         changelog_file: CHANGES.md
