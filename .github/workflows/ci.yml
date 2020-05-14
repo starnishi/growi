@@ -53,7 +53,7 @@ jobs:
         yarn lint
 
     - name: test
-      uses: weseek/ghaction-release-slack-notification@master
+      uses: weseek/ghaction-release-slack-notification@feat/release-notification
       if: failure()
       with:
         channel: '#general'
